@@ -3,21 +3,311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learnify - Courses</title>
+    <title>Learnify - All Courses</title>
     <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="/" class="navbar-brand">Learnify</a>
-            <button class="navbar-toggle">☰</button>
+            <a href="index.html" class="navbar-brand">
+                <i class="fas fa-graduation-cap"></i> Learnify
+            </a>
+            <button class="navbar-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul class="navbar-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="courses.html">Courses</a></li>
+                <li><a href="courses.html" class="active">Courses</a></li>
                 <li><a href="login.html">Login</a></li>
+                <li>
+                    <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
             </ul>
         </div>
     </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Explore Our Courses</h1>
+            <p>Discover hundreds of courses to advance your skills</p>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses-section">
+        <div class="container">
+            <!-- Search and Filters -->
+            <div class="courses-toolbar">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search courses...">
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All</button>
+                    <button class="filter-btn" data-category="development">Development</button>
+                    <button class="filter-btn" data-category="design">Design</button>
+                    <button class="filter-btn" data-category="business">Business</button>
+                    <button class="filter-btn" data-category="marketing">Marketing</button>
+                </div>
+            </div>
+
+            <!-- Results Info -->
+            <div class="results-info">
+                <span id="resultsCount">Showing 8 courses</span>
+                <select id="sortSelect" class="sort-select">
+                    <option value="popular">Most Popular</option>
+                    <option value="newest">Newest</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+            </div>
+
+            <!-- Courses Grid -->
+            <div class="courses-grid" id="coursesGrid">
+                <!-- Course Card 1 -->
+                <div class="course-card" data-category="development">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop" alt="Web Development">
+                        <span class="course-badge">Bestseller</span>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">Development</div>
+                        <h3 class="course-title">Complete Web Development Bootcamp</h3>
+                        <p class="course-instructor">By John Smith</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                            <span><i class="fas fa-clock"></i> 42 hours</span>
+                            <span><i class="fas fa-users"></i> 2.5k</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">$99.99</span>
+                            <a href="course.html" class="btn btn-primary btn-small">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 2 -->
+                <div class="course-card" data-category="data-science">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop" alt="Data Science">
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">Data Science</div>
+                        <h3 class="course-title">Python for Data Science</h3>
+                        <p class="course-instructor">By Sarah Johnson</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                            <span><i class="fas fa-clock"></i> 36 hours</span>
+                            <span><i class="fas fa-users"></i> 1.8k</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">$89.99</span>
+                            <a href="course.html" class="btn btn-primary btn-small">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 3 -->
+                <div class="course-card" data-category="design">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&h=250&fit=crop" alt="UI/UX Design">
+                        <span class="course-badge">New</span>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">Design</div>
+                        <h3 class="course-title">UI/UX Design Masterclass</h3>
+                        <p class="course-instructor">By Emily Brown</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-star"></i> 4.7</span>
+                            <span><i class="fas fa-clock"></i> 28 hours</span>
+                            <span><i class="fas fa-users"></i> 1.2k</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">$79.99</span>
+                            <a href="course.html" class="btn btn-primary btn-small">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 4 -->
+                <div class="course-card" data-category="marketing">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=250&fit=crop" alt="Digital Marketing">
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">Marketing</div>
+                        <h3 class="course-title">Digital Marketing Strategy</h3>
+                        <p class="course-instructor">By Michael Lee</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-star"></i> 4.6</span>
+                            <span><i class="fas fa-clock"></i> 24 hours</span>
+                            <span><i class="fas fa-users"></i> 980</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">$69.99</span>
+                            <a href="course.html" class="btn btn-primary btn-small">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 5 -->
+                <div class="course-card" data-category="development">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=400&h=250&fit=crop" alt="JavaScript">
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">Development</div>
+                        <h3 class="course-title">JavaScript Advanced Concepts</h3>
+                        <p class="course-instructor">By Chris Anderson</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                            <span><i class="fas fa-clock"></i> 32 hours</span>
+                            <span><i class="fas fa-users"></i> 1.5k</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">$84.99</span>
+                            <a href="course.html" class="btn btn-primary btn-small">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 6 -->
+                <div class="course-card" data-category="business">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=250&fit=crop" alt="Business">
+                        <span class="course-badge">Bestseller</span>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">Business</div>
+                        <h3 class="course-title">Entrepreneurship Fundamentals</h3>
+                        <p class="course-instructor">By Robert Taylor</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-star"></i> 4.5</span>
+                            <span><i class="fas fa-clock"></i> 20 hours</span>
+                            <span><i class="fas fa-users"></i> 750</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">$59.99</span>
+                            <a href="course.html" class="btn btn-primary btn-small">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 7 -->
+                <div class="course-card" data-category="design">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400&h=250&fit=crop" alt="Graphic Design">
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">Design</div>
+                        <h3 class="course-title">Graphic Design Essentials</h3>
+                        <p class="course-instructor">By Jessica White</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-star"></i> 4.7</span>
+                            <span><i class="fas fa-clock"></i> 18 hours</span>
+                            <span><i class="fas fa-users"></i> 620</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">$54.99</span>
+                            <a href="course.html" class="btn btn-primary btn-small">View Course</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course Card 8 -->
+                <div class="course-card" data-category="marketing">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1432888622747-4eb9a8f5a70d?w=400&h=250&fit=crop" alt="SEO">
+                        <span class="course-badge">New</span>
+                    </div>
+                    <div class="course-content">
+                        <div class="course-category">Marketing</div>
+                        <h3 class="course-title">SEO Mastery Course</h3>
+                        <p class="course-instructor">By Daniel Kim</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                            <span><i class="fas fa-clock"></i> 22 hours</span>
+                            <span><i class="fas fa-users"></i> 890</span>
+                        </div>
+                        <div class="course-footer">
+                            <span class="course-price">$74.99</span>
+                            <a href="course.html" class="btn btn-primary btn-small">View Course</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="pagination-btn" disabled>
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <button class="pagination-btn active">1</button>
+                <button class="pagination-btn">2</button>
+                <button class="pagination-btn">3</button>
+                <button class="pagination-btn">4</button>
+                <button class="pagination-btn">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-graduation-cap"></i> Learnify
+                    </a>
+                    <p>Empowering learners worldwide with quality education.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="courses.html">Courses</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="courses.html">Development</a></li>
+                        <li><a href="courses.html">Design</a></li>
+                        <li><a href="courses.html">Business</a></li>
+                        <li><a href="courses.html">Marketing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Learnify. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
     <script src="js/main.js"></script>
 </body>
